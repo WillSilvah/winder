@@ -3,7 +3,7 @@ const aoijs = require("aoi.js");
 const fs = require('fs');
 
 const bot = new aoijs.AoiClient({
-	token: "tokendobot",
+	token: process.env.TOKEN,
 	prefix: 'pw!',
     respondToBots: "false",
     intents: ["Guilds", "GuildMembers", "GuildBans", "GuildEmojisAndStickers", "GuildIntegrations", "GuildWebhooks", "GuildInvites", "GuildVoiceStates", "GuildPresences", "GuildMessages", "GuildMessageReactions", "GuildMessageTyping", "DirectMessages", "DirectMessageReactions", "DirectMessageTyping", "MessageContent"],
