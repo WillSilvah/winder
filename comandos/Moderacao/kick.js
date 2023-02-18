@@ -7,10 +7,6 @@ usage: "expulsar @user/userID motivo?",
 code: `
 <@$authorID> | O usuário foi expulso!
 
-$kick[$guildID;$findUser[$message[1]];Expulso por: $userTag | Motivo: $messageSlice[1]]
-
-$ifAwaited[$isUserDMEnabled[$findUser[$message[1]]]==true;{execute:kick-dm}]
-
 $channelSendMessage[$getVar[punishmentLog];{newEmbed:
 {author:$userTag[$findUser[$message[1]]] ($findUser[$message[1]]) | Expulso:https://cdn.discordapp.com/emojis/1063526458359808070.png?size=2048}
 {description:
@@ -24,6 +20,10 @@ $messageSlice[1]
 {color:#6F03FC}
 {thumbnail:$userAvatar[$authorID]}
 }]
+
+$kick[$guildID;$findUser[$message[1]];Expulso por: $userTag | Motivo: $messageSlice[1]]
+
+$ifAwaited[$isUserDMEnabled[$findUser[$message[1]]]==true;{execute:kick-dm}]
 
 $onlyPerms[kickmembers;<@$authorID> {newEmbed: {author:Você não tem as permissões necessárias} {description:Por segurança, você precisa ter as permissões de **expulsar membros** e ter o cargo <@&861323169482801213>.}  {footer:Que tal você entrar para a staff? $getguildVar[prefixo]serstaff} }]
 

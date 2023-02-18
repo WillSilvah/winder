@@ -9,7 +9,7 @@ code: `$botTyping
 
 $attachment[$getObjectProperty[image];$username[$clientID]-red_panda.jpg]
 $createObject[$jsonRequest[https://some-random-api.ml/animal/red_panda]]
-$serverCooldown[30s;<@$authorID> | Espere **%time%** para executar este comando novamente!]
+$guildCooldown[30s;<@$authorID> | Espere **%time%** para executar este comando novamente!]
 $suppressErrors[Eu tentei executar o comando \`$commandName\` e eu juro que eu fiz o máximo possível.
 {error}]
 `

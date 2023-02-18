@@ -7,10 +7,6 @@ usage: "ban @user/userID motivo?",
 code: `
 <@$authorID> | O usuário foi banido!
 
-$ban[$guildID;$findUser[$message[1]];0;Banido por:$userTag | Motivo: $messageSlice[1]]
-
-$ifAwaited[$isUserDMEnabled[$findUser[$message[1]]]==true;{execute:ban-dm}]
-
 $channelSendMessage[$getVar[punishmentLog];{newEmbed:
 {author:$userTag[$findUser[$message[1]]] ($findUser[$message[1]]) | Banido:https://cdn.discordapp.com/emojis/1063526458359808070.png?size=2048}
 {description:
@@ -24,6 +20,11 @@ $messageSlice[1]
 {color:#6F03FC}
 {thumbnail:$userAvatar[$authorID]}
 }]
+
+$ban[$guildID;$findUser[$message[1]];0;Banido por:$userTag | Motivo: $messageSlice[1]]
+
+$ifAwaited[$isUserDMEnabled[$findUser[$message[1]]]==true;{execute:ban-dm}]
+
 
 $onlyPerms[banmembers;<@$authorID> {newEmbed: {author:Você não tem as permissões necessárias} {description:Por segurança, você precisa ter as permissões de **banir membros** e ter o cargo <@&861323169482801213>.}  {footer:Que tal você entrar para a staff? $getguildVar[prefixo]serstaff} {color:#6F03FC}}]
 

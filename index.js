@@ -1,46 +1,38 @@
 const aoijs = require("aoi.js");
 
+require('dotenv').config()
+
 const aoifb = require("aoi.fb");
 
-<<<<<<< HEAD
-const fs = require('fs');
-
-const bot = new aoijs.AoiClient({
-	token: "tokendobot",
-	prefix: 'pw!',
-    respondToBots: "false",
-    intents: ["Guilds", "GuildMembers", "GuildBans", "GuildEmojisAndStickers", "GuildIntegrations", "GuildWebhooks", "GuildInvites", "GuildVoiceStates", "GuildPresences", "GuildMessages", "GuildMessageReactions", "GuildMessageTyping", "DirectMessages", "DirectMessageReactions", "DirectMessageTyping", "MessageContent"],
-     aoiLogs: false,
-     events: ["onMessage", "onMessageDelete", "onMessageUpdate", "onMessageDeleteBulk", "onGuildUnavailable", "onChannelCreate", "onChannelUpdate", "onChannelDelete", "onJoin", "onLeave", "onMemberUpdate", "onMemberAvailable", "onBanAdd", "onBanRemove", "onReactionAdd", "onReactionRemove", "onReactionRemoveAll", "onReactionRemoveEmoji", "onInteractionCreate", "onApplicationCmdPermsUpdate", "onUserUpdate", "onVariableCreate", "onVariableDelete", "onVariableUpdate", "onFunctionError"],
-=======
-require('dotenv').config()
-console.log(process.env)
+const firebase = aoifb.Create({
+ apiKey: process.env.APIKEY,
+ authDomain: process.env.AUTHDOMAIN,
+ databaseURL: process.env.DATABASEURL,
+ projectId: process.env.PROJECTID,
+ storageBucket: process.env.STORAGEBUCKET,
+ messagingSenderId: process.env.MESSAGINGSENDID,
+ appId: process.env.APPID,
+ measurementId: process.env.MEASUREMENTID
+})
 
 const fs = require('fs');
 
 const bot = new aoijs.AoiClient({
 	token: process.env.TOKEN,
 	prefix: 'pw!',
-     intents: ["Guilds", "GuildMembers", "GuildBans", "GuildEmojisAndStickers", "GuildIntegrations", "GuildWebhooks", "GuildInvites", "GuildVoiceStates", "GuildPresences", "GuildMessages", "GuildMessageReactions", "GuildMessageTyping", "DirectMessages", "DirectMessageReactions", "DirectMessageTyping", "MessageContent"],
+    respondToBots: "false",
+    intents: ["Guilds", "GuildMembers", "GuildBans", "GuildEmojisAndStickers", "GuildIntegrations", "GuildWebhooks", "GuildInvites", "GuildVoiceStates", "GuildPresences", "GuildMessages", "GuildMessageReactions", "GuildMessageTyping", "DirectMessages", "DirectMessageReactions", "DirectMessageTyping", "MessageContent"],
      aoiLogs: false,
      events: ["onMessage", "onMessageDelete", "onMessageUpdate", "onMessageDeleteBulk", "onGuildUnavailable", "onChannelCreate", "onChannelUpdate", "onChannelDelete", "onJoin", "onLeave", "onMemberUpdate", "onMemberAvailable", "onBanAdd", "onBanRemove", "onReactionAdd", "onReactionRemove", "onReactionRemoveAll", "onReactionRemoveEmoji", "onInteractionCreate", "onApplicationCmdPermsUpdate", "onUserUpdate", "onVariableCreate", "onVariableDelete", "onVariableUpdate", "onFunctionError"],
-     autoUpdates: false,
-     mobilePlatform: false,
-     respondToBots: false,
-    guildOnly: true,
->>>>>>> 4dafcab5eff965932ba187910ff0a306d3f20d23
      database: {
  type: "aoi.fb",
    tables: ["playboot-stable"],
  db: firebase
  },
-<<<<<<< HEAD
      autoUpdates: false,
      mobilePlatform: false,
      
      guildOnly: true,
-=======
->>>>>>> 4dafcab5eff965932ba187910ff0a306d3f20d23
         respondOnEdit: {
             commands: true,
         time: 600000
@@ -61,7 +53,6 @@ const files = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 files.forEach( x => {
 require(`./events/${x}`)(bot)
 });
-<<<<<<< HEAD
 
 bot.variables({
 //configuração de canais padrão
@@ -74,5 +65,3 @@ bot.variables({
   "punishmentLog": "861367708716236800"
 
 })
-=======
->>>>>>> 4dafcab5eff965932ba187910ff0a306d3f20d23
